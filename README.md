@@ -20,11 +20,14 @@ are generated from GStreamer 1.24. Enclosed ARM64 Android binary generated
 with NDK 25. 
 
 Use enclosed PluginProject/CmakeLists.txt to build plugin for windows. This
-will require GStreamer installation on build machine. The project *probably*
-won't build successfully for Android on a Windows machine due to the Windows
-limit on command string length. There may be a work around, but I was
-only able to build successfully with my Ubuntu 22.04 workstation due
-to this limitation on Windows. 
+will require GStreamer installation on build machine. Use Android NDK 25 
+with the enclosed Anrdoid ndk-build project to build for ARM64 Android. 
+ARM v67 32bit isn't directly supported, but probably works. 
+
+The project *probably* won't build successfully for Android on a Windows 
+machine due to the Windows limit on command string length. There may be
+a work around, but I was only able to build successfully with my 
+Ubuntu 22.04 workstation due to this limitation on Windows. 
 
 This plugin was inspired by the mrayGStreamerUnity project,
 available here:
