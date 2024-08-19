@@ -33,7 +33,7 @@ https://github.com/mrayy/mrayGStreamerUnity
 However, very little (if any) code in this project is a 1:1 copy
 from the above. 
 
-This plugin also developed by directly using example code given in the 
+This plugin was also developed by directly using example code given in the 
 Unity3D NativeRenderingPlugin project (just like mrayGStreamerUnity),
 available here:
 https://github.com/Unity-Technologies/NativeRenderingPlugin
