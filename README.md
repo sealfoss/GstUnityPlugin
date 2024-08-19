@@ -1,6 +1,8 @@
 # GstUnityPlugin
 GStreamer plugin for Unity3D.
 
+Example video of plugin in operation on Meta Quest 3: https://youtube.com/shorts/b_5GqoxugRI
+
 Tested withn Unity3D version 2022.3.42. Probably works well enough
 on older versions. 
 
