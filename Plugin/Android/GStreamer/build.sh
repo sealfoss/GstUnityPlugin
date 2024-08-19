@@ -1,0 +1,24 @@
+NDK="${1:-25}"
+GST="${2:-24}"
+ANDROID_NDK_ROOT_25=/home/reed/Android/Sdk/ndk/25.2.9519653
+ANDROID_NDK_ROOT_21=/home/reed/Android/Sdk/ndk/21.4.7075529
+GSTREAMER_ROOT_ANDROID_24=/home/reed/gstreamer-android/gstreamer-android-1.24.2
+GSTREAMER_ROOT_ANDROID_22=/home/reed/gstreamer-android/gstreamer-android-1.22.12
+NDK_ROOT=$ANDROID_NDK_ROOT_25
+GST_ROOT=$GSTREAMER_ROOT_ANDROID_24
+
+if [ "$NDK" -eq 21 ] 
+then NDK_ROOT=$ANDROID_NDK_ROOT_21
+fi
+
+if [ "$GST" -eq 22 ]
+then GST_ROOT=$GSTREAMER_ROOT_ANDROID_22
+fi
+
+export ANDROID_NDK_ROOT=$NDK_ROOT
+export GSTREAMER_ROOT_ANDROID=$GST_ROOT
+
+echo Set ANDROID_NDK_ROOT to $ANDROID_NDK_ROOT
+echo Set GSTREAMER_ROOT_ANDROID to $GSTREAMER_ROOT_ANDROID
+
+$ANDROID_NDK_ROOT/ndk-build V=1 NDK_PROJECT_PATH=. NDK_APPLICATION_MK=jni/Application.mk
