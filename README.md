@@ -1,5 +1,8 @@
 # GstUnityPlugin
-GStreamer plugin for Unity3D
+GStreamer plugin for Unity3D.
+
+Tested withn Unity3D version 2022.3.42. Probably works well enough
+on older versions. 
 
 This plugin has been tested successfully on x86_64 Windows using the 
 Unity3D DirectX 11, OpenGL (core), and Vulkan graphics backends.
