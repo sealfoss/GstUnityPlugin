@@ -46,7 +46,7 @@ video is decoded into an intermediary buffer, before being copied into the
 Unity 3D texture memory. If you're attempting to run the stream in an 
 application with a framerate of 90hz, this copy step takes to long with
 textures of that size. Frame stuttering will occurr as a result, and 
-performance is rather miserable.;
+performance is rather miserable.
 
 A better solution would be to decode video directly into Unity3D texture 
 memory, thus skipping the intermediary copy step. I'm working on it. 
