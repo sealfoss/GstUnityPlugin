@@ -22,7 +22,7 @@ with NDK 25.
 Use enclosed PluginProject/CmakeLists.txt to build plugin for windows. This
 will require GStreamer installation on build machine. Use Android NDK 25 
 with the enclosed Anrdoid ndk-build project to build for ARM64 Android. 
-ARM v67 32bit isn't directly supported, but probably works. 
+ARM v7 32bit isn't directly supported, but probably works. 
 
 The project *probably* won't build successfully for Android on a Windows 
 machine due to the Windows limit on command string length. There may be
