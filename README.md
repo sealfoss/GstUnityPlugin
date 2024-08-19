@@ -22,7 +22,7 @@ Plugin has been built with both GStreamer 1.22 and 1.24. Enclosed binaries
 are generated from GStreamer 1.24. Enclosed ARM64 Android binary generated
 with NDK 25. 
 
-Use enclosed PluginProject/CmakeLists.txt to build plugin for windows. This
+Use enclosed CmakeLists.txt to build plugin for windows. This (of course)
 will require GStreamer installation on build machine. Use Android NDK 25 
 with the enclosed Anrdoid ndk-build project to build for ARM64 Android. 
 ARM v7 32bit isn't directly supported, but probably works. 
