@@ -42,7 +42,8 @@ available here:
 https://github.com/Unity-Technologies/NativeRenderingPlugin
 
 The example project includes shaders that can handle RGB/RGBA textures
-as well as NV12 textures. Don't try to use RGB w/ DirectX or Vulkan.
+as well as NV12 textures. Don't try to use RGB w/ DirectX or Vulkan,
+use RGBA instead.
 
 TO DO:
 
