@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="\\192.168.1.91\GstUnityPlugin\Plugin\source\GstUnityPlugin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="\\192.168.1.91\GstUnityPlugin\Plugin\source\GstUnityLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="\\192.168.1.91\GstUnityPlugin\Plugin\source\GstStreamController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="\\192.168.1.91\GstUnityPlugin\Plugin\source\Dx11TextureController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="\\192.168.1.91\GstUnityPlugin\Plugin\source\GlTextureController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="\\192.168.1.91\GstUnityPlugin\Plugin\source\VkTextureController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="\\192.168.1.91\GstUnityPlugin\Plugin\source\UnityTextureController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="\\192.168.1.91\GstUnityPlugin\Plugin\source\gl3w.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="\\192.168.1.91\GstUnityPlugin\Plugin\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{B22CA8E2-C419-3D92-9A4B-849A0D04CF64}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+^\\192.168.1.91\GSTUNITYPLUGIN\PLUGIN\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -S//192.168.1.91/GstUnityPlugin/Plugin -B//192.168.1.91/GstUnityPlugin/Plugin/VS --check-stamp-file //192.168.1.91/GstUnityPlugin/Plugin/VS/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

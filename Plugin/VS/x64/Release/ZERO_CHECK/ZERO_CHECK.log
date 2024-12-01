@@ -1,0 +1,9 @@
+﻿  '\\192.168.1.91\GstUnityPlugin\Plugin\VS'
+  CMD.EXE was started with the above path as the current directory.
+  UNC paths are not supported.  Defaulting to Windows directory.
+  1>Checking Build System
+  CMake is re-running because generate.stamp.list is missing.
+  -- Selecting Windows SDK version 10.0.22621.0 to target Windows 10.0.19045.
+  -- Configuring done (0.1s)
+  -- Generating done (0.2s)
+  -- Build files have been written to: //192.168.1.91/GstUnityPlugin/Plugin/VS

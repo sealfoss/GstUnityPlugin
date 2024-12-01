@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>\\192.168.1.91\GstUnityPlugin\Plugin\VS\x64\Release\ZERO_CHECK</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>\\192.168.1.91\GstUnityPlugin\Plugin\VS\Release\GstUnityPlugin.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>\\192.168.1.91\GstUnityPlugin\Plugin\VS\x64\Release\ALL_BUILD</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

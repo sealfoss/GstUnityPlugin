@@ -1,0 +1,15 @@
+﻿  '\\192.168.1.91\GstUnityPlugin\Plugin\VS'
+  CMD.EXE was started with the above path as the current directory.
+  UNC paths are not supported.  Defaulting to Windows directory.
+  Building Custom Rule //192.168.1.91/GstUnityPlugin/Plugin/CMakeLists.txt
+  GstUnityPlugin.cpp
+  GstUnityLogger.cpp
+  GstStreamController.cpp
+  Dx11TextureController.cpp
+  GlTextureController.cpp
+  VkTextureController.cpp
+  UnityTextureController.cpp
+  Generating Code...
+  gl3w.c
+     Creating library //192.168.1.91/GstUnityPlugin/Plugin/VS/Release/GstUnityPlugin.lib and object //192.168.1.91/GstUnityPlugin/Plugin/VS/Release/GstUnityPlugin.exp
+  GstUnityPlugin.vcxproj -> \\192.168.1.91\GstUnityPlugin\Plugin\VS\Release\GstUnityPlugin.dll

@@ -1,24 +1,21 @@
-NDK="${1:-25}"
-GST="${2:-24}"
-ANDROID_NDK_ROOT_25=/home/reed/Android/Sdk/ndk/25.2.9519653
-ANDROID_NDK_ROOT_21=/home/reed/Android/Sdk/ndk/21.4.7075529
-GSTREAMER_ROOT_ANDROID_24=/home/reed/gstreamer-android/gstreamer-android-1.24.2
-GSTREAMER_ROOT_ANDROID_22=/home/reed/gstreamer-android/gstreamer-android-1.22.12
-NDK_ROOT=$ANDROID_NDK_ROOT_25
-GST_ROOT=$GSTREAMER_ROOT_ANDROID_24
+#Build tested to work with gstreamer 1.24 and android ndk 25.
+#Requires environment variables for ANDROID_NDK_ROOT and GSTREAMER_ROOT_ANDROID.
+#You can set both here below.
 
-if [ "$NDK" -eq 21 ] 
-then NDK_ROOT=$ANDROID_NDK_ROOT_21
+DEFAULT_NDK_PATH=$HOME/Android/Sdk/ndk/25.2.9519653
+DEFAULT_GST_PATH=$HOME/gstreamer-android/gstreamer-android-1.24.2
+
+if [[ -z "${ANDROID_NDK_ROOT}" ]]; then
+    echo No value set for ANDROID_NDK_ROOT, setting to script default...
+    export ANDROID_NDK_ROOT=$DEFAULT_NDK_PATH
+    echo ANDROID_NDK_ROOT set to $ANDROID_NDK_ROOT
 fi
 
-if [ "$GST" -eq 22 ]
-then GST_ROOT=$GSTREAMER_ROOT_ANDROID_22
+if [[ -z "${GSTREAMER_ROOT_ANDROID}" ]]; then
+    echo No value set for GSTREAMER_ROOT_ANDROID, setting to script default...
+    export GSTREAMER_ROOT_ANDROID=$DEFAULT_GST_PATH
+    echo GSTREAMER_ROOT_ANDROID set to $GSTREAMER_ROOT_ANDROID
 fi
 
-export ANDROID_NDK_ROOT=$NDK_ROOT
-export GSTREAMER_ROOT_ANDROID=$GST_ROOT
-
-echo Set ANDROID_NDK_ROOT to $ANDROID_NDK_ROOT
-echo Set GSTREAMER_ROOT_ANDROID to $GSTREAMER_ROOT_ANDROID
-
-$ANDROID_NDK_ROOT/ndk-build V=1 NDK_PROJECT_PATH=. NDK_APPLICATION_MK=jni/Application.mk
+$ANDROID_NDK_ROOT/ndk-build V=1 NDK_PROJECT_PATH=. \
+NDK_APPLICATION_MK=jni/Application.mk

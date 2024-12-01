@@ -1,15 +1,15 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_MODULE    := 	GStreamerUnityPlugin
+LOCAL_MODULE    := 	GstUnityPlugin
 
 LOCAL_ARM_MODE := arm
 
 IMMERSIATV_PLAYER_ROOT  := $(abspath $(LOCAL_PATH)/../../)
 
-PLUGIN_SOURCE_PATH      := $(IMMERSIATV_PLAYER_ROOT)/sources
+PLUGIN_SOURCE_PATH      := $(IMMERSIATV_PLAYER_ROOT)/source
 
-EXT_SOURCE_PATH         := $(IMMERSIATV_PLAYER_ROOT)/includes
+EXT_SOURCE_PATH         := $(IMMERSIATV_PLAYER_ROOT)/include
 
 BUILT_LIB_PATH = $(IMMERSIATV_PLAYER_ROOT)/Android/gst-android-build/arm64-v8a
 
