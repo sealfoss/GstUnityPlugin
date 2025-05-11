@@ -68,7 +68,7 @@ memory, thus skipping the intermediary copy step. I'm working on it.
 In the meantime, I have been able to stream 4x 1920x1080p h264 video 
 streams on the Meta Quest 3 simultaneously at 60fps, with somewhere 
 around 200ms latency. I am confident solving this intermediary copy 
-step problem with lower that latency further.
+step problem will lower that latency further.
 
 Thanks,
 
