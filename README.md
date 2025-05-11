@@ -56,9 +56,9 @@ use RGBA instead.
 TO DO:
 
 4k video is still an issue. When streaming from something like a udpsrc,
-video is decoded into an intermediary buffer, before being copied into the 
+video is decoded into an intermediary buffer before being copied into the 
 Unity 3D texture memory. If you're attempting to run the stream in an 
-application with a framerate of 90hz, this copy step takes to long with
+application with a framerate of 90hz, this copy step takes too long with
 textures of that size. Frame stuttering will occurr as a result, and 
 performance is rather miserable.
 
