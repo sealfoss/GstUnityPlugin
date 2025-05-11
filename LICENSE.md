@@ -1,4 +1,4 @@
-Copyright 2025 William Foss
+Copyright 2025 William Reed Seal-Foss
 
 This software is released under Creative Commons liscense CC BY-NC-SA 4.0. 
 
