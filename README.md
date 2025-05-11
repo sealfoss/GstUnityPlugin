@@ -10,7 +10,7 @@ This plugin has been tested successfully on x86_64 Windows using the
 Unity3D DirectX 11, OpenGL (core), and Vulkan graphics backends.
 
 The plugin has also been tested successfully on ARM 64 Android using 
-the Open Unity3D OpenGL ES3 and Vulkan graphics backends. 
+the Unity3D OpenGL ES3 and Vulkan graphics backends. 
 
 This plugin has been tested successfully on Meta Quest 3, and is able
 to utilize hardware video decode features via the 
