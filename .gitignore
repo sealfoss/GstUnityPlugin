@@ -1,0 +1,4 @@
+Android/gst-android-build/
+Android/libs/*
+Android/obj/
+build/

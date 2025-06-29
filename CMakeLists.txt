@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.29.2)
+cmake_minimum_required(VERSION 3.22.1)
 project("GstUnityPlugin")
 find_package(PkgConfig REQUIRED)
 find_package(OpenGL REQUIRED)

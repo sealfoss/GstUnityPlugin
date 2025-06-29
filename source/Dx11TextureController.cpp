@@ -21,7 +21,6 @@ Dx11TextureController::Dx11TextureController(UnityGfxRenderer apiType)
 	_apiType = apiType;
 }
 
-
 const BYTE kVertexShaderCode[] =
 {
 	68,88,66,67,86,189,21,50,166,106,171,1,10,62,115,48,224,137,163,129,1,0,0,0,168,2,0,0,4,0,0,0,48,0,0,0,0,1,0,0,4,2,0,0,84,2,0,0,
@@ -40,6 +39,7 @@ const BYTE kVertexShaderCode[] =
 	3,0,0,0,0,0,0,0,15,0,0,0,62,0,0,0,0,0,0,0,1,0,0,0,3,0,0,0,1,0,0,0,15,0,0,0,67,79,76,79,82,0,83,86,95,80,111,115,
 	105,116,105,111,110,0,171,171
 };
+
 const BYTE kPixelShaderCode[] =
 {
 	68,88,66,67,196,65,213,199,14,78,29,150,87,236,231,156,203,125,244,112,1,0,0,0,32,1,0,0,4,0,0,0,48,0,0,0,124,0,0,0,188,0,0,0,236,0,0,0,
@@ -49,7 +49,6 @@ const BYTE kPixelShaderCode[] =
 	40,0,0,0,1,0,0,0,8,0,0,0,32,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,15,15,0,0,67,79,76,79,82,0,171,171,79,83,71,78,
 	44,0,0,0,1,0,0,0,8,0,0,0,32,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,15,0,0,0,83,86,95,84,65,82,71,69,84,0,171,171
 };
-
 
 void Dx11TextureController::CreateResources()
 {
@@ -124,7 +123,6 @@ void Dx11TextureController::ReleaseResources()
 	SAFE_RELEASE(m_RasterState);
 	SAFE_RELEASE(m_BlendState);
 	SAFE_RELEASE(m_DepthState);
-
 }
 
 void Dx11TextureController::ProcessDeviceEvent(UnityGfxDeviceEventType type, 

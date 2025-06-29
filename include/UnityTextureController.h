@@ -1,50 +1,60 @@
 #pragma once
 
-
 #include <stddef.h>
 #include <assert.h>
 #include <unordered_map>
 #include "GstUnityPlugin.h"
 
+#define ANDROID_DEV_ON_LINUX 1
+
 #if SUPPORT_D3D11
-#include <assert.h>
-#include <d3d11.h>
-#endif
+	#include <assert.h>
+	#include <d3d11.h>
+#endif // SUPPORT_D3D11
 
 #if SUPPORT_OPENGL_UNIFIED
-#if UNITY_IOS || UNITY_TVOS
-#	include <OpenGLES/ES2/gl.h>
-#elif UNITY_ANDROID || UNITY_WEBGL
-#	include <GLES3/gl3.h>
-#elif UNITY_OSX
-#	include <OpenGL/gl3.h>
-#elif UNITY_WIN
-// On Windows, use gl3w to initialize and load OpenGL Core functions. In principle any other
-// library (like GLEW, GLFW etc.) can be used; here we use gl3w since it's simple and
-// straightforward.
-#	include "gl3w/gl3w.h"
-#elif UNITY_LINUX
-#	define GL_GLEXT_PROTOTYPES
-#	include <GL/gl.h>
-#elif UNITY_EMBEDDED_LINUX
-#	include <GLES2/gl2.h>
-#if SUPPORT_OPENGL_CORE
-#	define GL_GLEXT_PROTOTYPES
-#	include <GL/gl.h>
-#endif
-#else
-#	error Unknown platform
-#endif
-#endif
+	#if UNITY_IOS || UNITY_TVOS
+		#include <OpenGLES/ES2/gl.h>
+	#elif UNITY_ANDROID || UNITY_WEBGL
+		#include <GLES3/gl3.h>
+		#include <EGL/egl.h>
+		#include <gst/gl/gl.h>
+		#include <gst/gl/gstglbufferpool.h>
+	#elif UNITY_OSX
+		#include <OpenGL/gl3.h>
+	#elif UNITY_WIN
+		// On Windows, use gl3w to initialize and load OpenGL Core functions. In principle any other
+		// library (like GLEW, GLFW etc.) can be used; here we use gl3w since it's simple and
+		// straightforward.
+		#include "gl3w/gl3w.h"
+	#elif UNITY_LINUX
+		#define GL_GLEXT_PROTOTYPES
+		#include <GL/gl.h>
+		#if ANDROID_DEV_ON_LINUX
+			#include <GLES3/gl3.h>
+			#include <EGL/egl.h>
+			#include <gst/gl/gl.h>
+			#include <gst/gl/gstglbufferpool.h>
+		#endif // ANDROID_DEV_ON_LINUX
+	#elif UNITY_EMBEDDED_LINUX
+		#include <GLES2/gl2.h>
+		#if SUPPORT_OPENGL_CORE
+			#define GL_GLEXT_PROTOTYPES
+			#include <GL/gl.h>
+		#endif // SUPPORT_OPENGL_CORE
+	#else
+		#error Unknown platform
+	#endif // UNITY_IOS || UNITY_TVOS
+#endif // SUPPORT_OPENGL_UNIFIED
 
 #if SUPPORT_VULKAN
-#include <stddef.h>
-#include <map>
-#include <vector>
-#include <math.h>
-#define VK_NO_PROTOTYPES
-#include "Unity/IUnityGraphicsVulkan.h"
-#endif
+	#include <stddef.h>
+	#include <map>
+	#include <vector>
+	#include <math.h>
+	#define VK_NO_PROTOTYPES
+	#include "Unity/IUnityGraphicsVulkan.h"
+#endif // SUPPORT_VULKAN
 
 
 struct IUnityInterfaces;
@@ -100,6 +110,14 @@ protected:
 
 
 #if SUPPORT_OPENGL_UNIFIED
+struct UnityGlContext
+{
+	EGLContext context;
+    EGLDisplay display;
+    EGLSurface surface;
+    bool valid;
+};
+
 class GlTextureController : public UnityTextureController
 {
 public:
@@ -122,11 +140,24 @@ public:
 
 	virtual std::string GetTypeName() { return "OpenGL"; }
 
+	bool AllocateUnityGlBuffers(
+		int width, int height, int channels, int poolSize
+	);
+
+	GstBufferPool* CreateUnityGlBufferPool(
+		GstGLContext *context, int width, int height, int poolSize
+	);
+
+	static UnityGlContext GetUnityGlContext();
+
 private:
 
 	void CreateResources();
 	void ReleaseResources();
 
+	GstBufferPool *_unityGlBufferPool = nullptr;
+	GLuint *_unityTexturePool = nullptr;
+	int _poolSize = 0;
 	GLuint _textureFormat;
 	GLenum _formats[5] = {(GLuint)0, GL_RED, GL_RG, GL_RGB, GL_RGBA};
 	GLuint m_VertexShader;
@@ -137,7 +168,7 @@ private:
 	int m_UniformWorldMatrix;
 	int m_UniformProjMatrix;
 };
-#endif
+#endif // SUPPORT_OPENGL_UNIFIED
 
 #if SUPPORT_D3D11
 class Dx11TextureController : public UnityTextureController
@@ -180,7 +211,7 @@ private:
 	ID3D11BlendState* m_BlendState;
 	ID3D11DepthStencilState* m_DepthState;
 };
-#endif
+#endif // SUPPORT_D3D11
 
 
 #if SUPPORT_VULKAN
@@ -253,5 +284,5 @@ private:
 	VkRenderPass m_TrianglePipelineRenderPass;
 };
 
-#endif
+#endif // SUPPORT_VULKAN
 

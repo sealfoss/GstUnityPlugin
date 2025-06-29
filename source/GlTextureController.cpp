@@ -98,10 +98,11 @@ void GlTextureController::EndModifyTexture(int id, void* texHandle, unsigned cha
 
 void GlTextureController::CreateResources()
 {
-#	if UNITY_WIN && SUPPORT_OPENGL_CORE
+#if UNITY_WIN && SUPPORT_OPENGL_CORE
 	if (_apiType == kUnityGfxRendererOpenGLCore)
 		gl3wInit();
-#	endif
+#endif // UNITY_WIN && SUPPORT_OPENGL_CORE
+
 	// Make sure that there are no GL error flags set before creating resources
 	while (glGetError() != GL_NO_ERROR) {}
 
@@ -116,14 +117,13 @@ void GlTextureController::CreateResources()
 		m_VertexShader = CreateShader(GL_VERTEX_SHADER, kGlesVProgTextGLES3);
 		m_FragmentShader = CreateShader(GL_FRAGMENT_SHADER, kGlesFShaderTextGLES3);
 	}
-#	if SUPPORT_OPENGL_CORE
+#if SUPPORT_OPENGL_CORE
 	else if (_apiType == kUnityGfxRendererOpenGLCore)
 	{
 		m_VertexShader = CreateShader(GL_VERTEX_SHADER, kGlesVProgTextGLCore);
 		m_FragmentShader = CreateShader(GL_FRAGMENT_SHADER, kGlesFShaderTextGLCore);
 	}
-#	endif // if SUPPORT_OPENGL_CORE
-
+#endif // if SUPPORT_OPENGL_CORE
 
 	// Link shaders into a program and find uniform locations
 	m_Program = glCreateProgram();
@@ -131,12 +131,13 @@ void GlTextureController::CreateResources()
 	glBindAttribLocation(m_Program, kVertexInputColor, "color");
 	glAttachShader(m_Program, m_VertexShader);
 	glAttachShader(m_Program, m_FragmentShader);
-#	if SUPPORT_OPENGL_CORE
-	if (_apiType == kUnityGfxRendererOpenGLCore)
-		glBindFragDataLocation(m_Program, 0, "fragColor");
-#	endif // if SUPPORT_OPENGL_CORE
-	glLinkProgram(m_Program);
 
+#if SUPPORT_OPENGL_CORE
+	if(_apiType == kUnityGfxRendererOpenGLCore)
+		glBindFragDataLocation(m_Program, 0, "fragColor");
+#endif // if SUPPORT_OPENGL_CORE
+
+	glLinkProgram(m_Program);
 	GLint status = 0;
 	glGetProgramiv(m_Program, GL_LINK_STATUS, &status);
 	assert(status == GL_TRUE);
@@ -162,4 +163,40 @@ bool GlTextureController::DeleteTexture(void* tex)
 	return false;
 }
 
-#endif
+bool GlTextureController::AllocateUnityGlBuffers(
+	int width, int height, int channels, int poolSize
+)
+{
+	size_t i;
+	//_unityTexturePool = (GLuint*) malloc(poolSize * sizeof(GLuint));
+	_unityTexturePool = new GLuint[poolSize];
+	glGenTextures(poolSize, _unityTexturePool);
+
+	for(i = 0; i < poolSize; i++)
+	{
+		glBindTexture(GL_TEXTURE_2D, _unityTexturePool[i]);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, 
+                    GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	}
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+UnityGlContext GlTextureController::GetUnityGlContext()
+{
+	EGLContext context = eglGetCurrentContext();
+    EGLDisplay display = eglGetCurrentDisplay();
+    EGLSurface surface = eglGetCurrentSurface(EGL_DRAW);
+    bool valid = 
+		context != EGL_NO_CONTEXT && 
+		display != EGL_NO_DISPLAY && 
+		surface != EGL_NO_SURFACE;
+	UnityGlContext unityGl = { context, display, surface, valid };
+	return unityGl;
+}
+
+#endif // SUPPORT_OPENGL_UNIFIED

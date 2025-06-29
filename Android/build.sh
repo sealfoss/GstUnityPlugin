@@ -2,8 +2,8 @@
 #Requires environment variables for ANDROID_NDK_ROOT and GSTREAMER_ROOT_ANDROID.
 #You can set both here below.
 
-DEFAULT_NDK_PATH=$HOME/Android/Sdk/ndk/25.2.9519653
-DEFAULT_GST_PATH=$HOME/gstreamer-android/gstreamer-android-1.24.2
+DEFAULT_NDK_PATH=$HOME/Android/Sdk/ndk/27.2.12479018
+DEFAULT_GST_PATH=$HOME/gstreamer-android/gstreamer-1.0-android-universal-1.26.2
 
 if [[ -z "${ANDROID_NDK_ROOT}" ]]; then
     echo No value set for ANDROID_NDK_ROOT, setting to script default...
